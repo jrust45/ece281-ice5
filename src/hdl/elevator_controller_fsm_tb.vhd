@@ -149,9 +149,19 @@ begin
             assert w_floor = "0001" report "bad hold on floor1" severity failure;
 		-- rest of cases
         
+        w_up_down <= '1'; wait for k_clk_period;
+            assert w_floor = "0010" report "bad up from floor1" severity failure;
+            
+        wait for k_clk_period;
+            assert w_floor = "0011" report "bad up from floor2" severity failure;
+            
+        w_reset <= '1'; wait for k_clk_period;
+            assert w_floor = "0010" report "bad reset" severity failure;
         -- go back DOWN
           
-		  	
+	   w_reset <= '0'; wait for k_clk_period;
+	       assert w_floor = "0011" report "bad up from floor2" severity failure;
+	       
 		wait; -- wait forever
 	end process;	
 	-----------------------------------------------------	

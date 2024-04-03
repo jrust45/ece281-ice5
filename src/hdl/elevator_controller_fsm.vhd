@@ -102,7 +102,7 @@ begin
                 s_floor3 when (i_up_down = '0' and f_Q = s_floor4) else -- going down
                 s_floor2 when (i_up_down = '0' and f_Q = s_floor3) else
                 s_floor1 when (i_up_down = '0' and f_Q = s_floor2) else
-                s_floor1; -- default case --or f_Q = f_Q
+                f_Q; -- default case --or f_Q = f_Q
   
 	-- Output logic
     with f_Q select
